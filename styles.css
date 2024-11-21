@@ -1,0 +1,201 @@
+/* Estilos generales */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+/* Barra de navegación */
+header nav {
+    background-color: #333;
+    padding: 10px;
+    position: sticky;
+    top: 0;
+}
+
+header nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+header nav ul li {
+    margin: 0 20px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+/* Para centrar el contenido de la página */
+#bienvenida {
+    text-align: center;
+    padding: 50px 20px;
+    background: #f4f4f4;
+}
+
+/* Estilos para los productos */
+.productos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas para productos más grandes */
+    gap: 20px;
+    margin-top: 20px;
+    padding: 0 20px;
+}
+
+.producto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%; /* Asegura que cada producto ocupe el 100% del contenedor */
+    max-width: 350px; /* Limitar el ancho de los productos */
+}
+
+.producto img {
+    width: 100%; /* Hace que la imagen ocupe todo el contenedor */
+    height: 400px; /* Aumento la altura de la imagen a 400px */
+    object-fit: cover; /* Asegura que la imagen mantenga su proporción y se recorte bien */
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.producto img:hover {
+    opacity: 0.8;
+}
+
+.oculto {
+    display: none;
+}
+
+#productos {
+    padding-bottom: 50px;
+}
+
+/* Estilos de la tabla de destinos */
+table {
+    width: 80%;
+    border-collapse: collapse;
+    text-align: center;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+th {
+    margin-right: 30px;
+    background-size: cover;
+    border-radius: 8px;
+    background-color: rgba(221, 217, 217, 0.507);
+}
+
+td {
+    padding: 20px;
+}
+
+td img {
+    margin-left: 0px;
+}
+
+/* Estilos para la imagen (sin hover ni interacción) */
+.imagentext {
+    position: relative;
+    width: 150px; /* Ajustado para ser consistente */
+    height: 150px;
+}
+
+.imagen {
+    border-radius: 8px;
+    display: block;
+    width: 150px;
+    height: 150px;
+    object-fit: cover; /* Asegura que la imagen se recorte bien */
+}
+
+/* Estilo para el modal */
+.modal {
+    display: none; /* Por defecto está oculto */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-contenido {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+}
+
+.cerrar {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+/* Estilo para la animación de nieve */
+.snow {
+    position: absolute;
+    top: -10px;
+    background-color: white;
+    border-radius: 50%;
+    width: 8px;
+    height: 8px;
+    animation: caer 5s linear infinite;
+}
+
+@keyframes caer {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+}
+
+/* Formulario de contacto */
+#formulario-contacto {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 10px;
+}
+
+#formulario-contacto input,
+#formulario-contacto textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#formulario-contacto button {
+    padding: 10px 20px;
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#formulario-contacto button:hover {
+    background-color: #4cae4c;
+}

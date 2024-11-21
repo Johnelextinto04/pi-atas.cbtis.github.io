@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Piñatas - CBTIS 81</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilos generales */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+            background-color: #f0f0f0;
+        }
+
+        /* Barra de navegación */
+        header nav {
+            background-color: #333;
+            padding: 10px;
+            position: sticky;
+            top: 0;
+        }
+
+        header nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        header nav ul li {
+            margin: 0 20px;
+        }
+
+        header nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        /* Fondo navideño en la sección de bienvenida */
+        #bienvenida {
+            background: url('navidad.jpg') no-repeat center center;
+            background-size: cover;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+            position: relative;
+            background-attachment: fixed;
+        }
+
+        #bienvenida h1 {
+            font-size: 50px;
+            color: #d32f2f;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        #bienvenida p {
+            font-size: 20px;
+            color: #f0f0f0;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Efecto de latido en las imágenes */
+        .producto {
+            display: inline-block;
+            margin: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s;
+            animation: latir 1.5s infinite;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            background-color: white;
+        }
+
+        @keyframes latir {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .producto img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Sección de productos */
+        .productos-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+            padding: 0 20px;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-contenido {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+            position: relative;
+        }
+
+        .cerrar {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        /* Pie de página */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        /* Estilos para la nieve que cae */
+        .snow {
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            width: 10px;
+            height: 10px;
+            background-color: white;
+            border-radius: 50%;
+            animation: snow 5s linear infinite;
+        }
+
+        .snow:nth-child(odd) {
+            left: 30%;
+            animation-duration: 7s;
+        }
+
+        .snow:nth-child(even) {
+            left: 70%;
+            animation-duration: 6s;
+        }
+
+        @keyframes snow {
+            0% {
+                top: -50px;
+                opacity: 0.8;
+            }
+            100% {
+                top: 100vh;
+                opacity: 0.3;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barra de navegación -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#productos">Productos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Sección de bienvenida con fondo navideño -->
+    <section id="bienvenida">
+        <div class="bienvenida-contenido">
+            <h1>PIÑATAS CBTIS 81</h1>
+            <p>Las mejores piñatas para tu fiesta Navideña.</p>
+        </div>
+
+        <!-- Decoración de nieve -->
+        <div class="snow" style="animation-delay: 0s;"></div>
+        <div class="snow" style="animation-delay: 1s;"></div>
+        <div class="snow" style="animation-delay: 2s;"></div>
+        <div class="snow" style="animation-delay: 3s;"></div>
+        <div class="snow" style="animation-delay: 4s;"></div>
+    </section>
+
+    <!-- Sección de productos -->
+    <section id="productos">
+        <h2>Productos</h2>
+        <div class="productos-grid">
+            <!-- Producto 1 -->
+            <div class="producto" onclick="mostrarDetalles('Cabeza de El Grinch', 'Piñata de la Cabeza de El Grinch para tu fiesta navideña $150')">
+                <img src="1.png" alt="Piñata Cabeza de el Grinch">
+                <h3>Cabeza de El Grinch</h3>
+            </div>
+            <!-- Producto 2 -->
+            <div class="producto" onclick="mostrarDetalles('Piñata de el Grinch', 'Piñata de Grinch para tu fiesta navideña $250')">
+                <img src="2.png" alt="Piñata del Grinch">
+                <h3>EL Grinch</h3>
+            </div>
+            <!-- Producto 3 -->
+            <div class="producto" onclick="mostrarDetalles('Piñata de Muñeco de Nieve', 'Muñeco de Nieve, un clásico para todos $200')">
+                <img src="3.png" alt="Piñata de Muñeco de Nieve">
+                <h3>Piñata  de Muñeco de Nieve</h3>
+            </div>
+            <!-- Producto 4 -->
+            <div class="producto" onclick="mostrarDetalles('Bota de navidad', 'Bota de navidad una bonita Bota de navidad para llenar de dulces $190')">
+                <img src="4.png" alt="Bota de navidad">
+                <h3>Bota de navidad</h3>
+            </div>
+            <!-- Producto 5 -->
+            <div class="producto" onclick="mostrarDetalles('Galleta de Gengibre', 'Galleta de Gengibre para la Posada Navideña $250')">
+                <img src="5.png" alt="Galleta de Gengibre">
+                <h3>Galleta de Gengibre</h3>
+            </div>
+            <!-- Producto 6 -->
+            <div class="producto" onclick="mostrarDetalles('Regalo de Navidad', 'Regalo de Navidad es un regalo $120')">
+                <img src="6.png" alt="Regalo de Navidad">
+                <h3>Regalo de Navidad</h3>
+            </div>
+            <!-- Producto 7 -->
+            <div class="producto" onclick="mostrarDetalles('Piñata De Picos De Noche Buena', 'Piñata De Picos De Noche Buena para la Posada De Noche Buena $170')">
+                <img src="7.png" alt="Piñata De Picos De Noche Buena">
+                <h3>Piñata De Picos De Noche Buena</h3>
+            </div>
+            <!-- Producto 8 -->
+            <div class="producto" onclick="mostrarDetalles('Piñata De Picos De Noche Buena verde', 'Piñata De Picos De Noche Buena verde para Tus Reuniones De Navidad $170')">
+                <img src="8.png" alt="Piñata De Picos De Noche Buena verde">
+                <h3>Piñata De Picos De Noche Buena verde</h3>
+            </div>
+            <!-- Producto 9 -->
+            <div class="producto" onclick="mostrarDetalles('Piñata De Picos', 'Piñata De Picos Piñata normal pero muy tipica $100')">
+                <img src="9.png" alt="Piñata De Picos">
+                <h3>Piñata De Picos</h3>
+            </div>
+            <!-- Producto 10 -->
+            <div class="producto" onclick="mostrarDetalles('Piñata De Picos Y El Eddy', 'Piñata De Picos Y El Eddy para todos los fans $150')">
+                <img src="10.png" alt="Piñata De Picos Y El Eddy">
+                <h3>Piñata De Picos Y El Eddy</h3>
+            </div>
+            <!-- Producto 11 -->
+            <div class="producto" onclick="mostrarDetalles('Piñata  De Baston de caramelo', 'Piñata  De Baston de caramelo Del caramelo mas tipico de Navidad $150')">
+                <img src="11.png" alt="Piñata  De Baston de caramelo">
+                <h3>Piñata  De Baston de caramelo</h3>
+            </div>
+            <!-- Producto 12 -->
+            <div class="producto" onclick="mostrarDetalles('Santa Claus', 'Piñata De Santa Claus El personaje carismatico de Navidad $170 ')">
+                <img src="12.png" alt="Santa Claus">
+                <h3>Santa Claus</h3>
+            </div>
+            <!-- Producto 13 -->
+            <div class="producto" onclick="mostrarDetalles('Piñata De Gengibre', 'Piñata De Gengibre la Galleta Mas Bonita De Navidad $200')">
+                <img src="13.png" alt="Piñata De Gengibre">
+                <h3>Piñata De Gengibre</h3>
+            </div>
+            <!-- Producto 14 -->
+            <div class="producto" onclick="mostrarDetalles('Piñata Colorida', 'Piñata Colorida DE Navidad $100')">
+                <img src="14.png" alt="Piñata Colorida">
+                <h3>Piñata Colorida</h3>
+            </div>
+            <!-- Producto 15 -->
+            <div class="producto" onclick="mostrarDetalles('Balon De Basketball', 'Balon De Basketball No Se Que Tiene Que Ver Con la Navidad $170')">
+                <img src="15.png" alt="Balon De Basketball">
+                <h3>Balon De Basketball</h3>
+            </div>
+            <!-- Producto 16 -->
+            <div class="producto" onclick="mostrarDetalles('Piñata De Noche Buena', 'Piñata navideña  de Noche Buena con detalles de temporada $150')">
+                <img src="16.png" alt="Piñata De Noche Buena">
+                <h3>Piñata De Noche Buena</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal de detalles -->
+    <div id="modal" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar" onclick="cerrarModal()">&times;</span>
+            <h2 id="modal-titulo"></h2>
+            <p id="modal-descripcion"></p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; PIÑATAS CBTIS 81. 2024</p>
+    </footer>
+
+    <script>
+        // Mostrar detalles del producto en un modal
+        function mostrarDetalles(titulo, descripcion) {
+            document.getElementById('modal-titulo').textContent = titulo;
+            document.getElementById('modal-descripcion').textContent = descripcion;
+            document.getElementById('modal').style.display = "flex";
+        }
+
+        // Cerrar el modal
+        function cerrarModal() {
+            document.getElementById('modal').style.display = "none";
+        }
+    </script>
+
+</body>
+</html>
